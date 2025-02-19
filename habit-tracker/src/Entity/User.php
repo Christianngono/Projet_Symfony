@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -16,7 +16,7 @@ class User implements UserInterface
     private ?int $id = null;
 
     #[ORM\Column(type: 'string', length: 100)]
-    private?string $pseudo = null;
+    private ?string $pseudo = null;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private ?string $email = null;
@@ -25,7 +25,7 @@ class User implements UserInterface
     private ?string $password = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private?string $photo = null;
+    private ?string $photo = null;
 
     public function getId(): ?int
     {
