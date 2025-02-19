@@ -32,9 +32,7 @@ class User implements UserInterface
         return $this->id;
     }
 
-
-
-    public function getPseudo():?string
+    public function getPseudo(): ?string
     {
         return $this->pseudo;
     }
@@ -46,7 +44,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getEmail():?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -57,7 +55,8 @@ class User implements UserInterface
 
         return $this;
     }
-    public function getPassword():?string
+
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -69,7 +68,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPhoto():?string
+    public function getPhoto(): ?string
     {
         return $this->photo;
     }
@@ -112,5 +111,11 @@ class User implements UserInterface
     public function getUsername(): string
     {
         return $this->email;
+    }
+
+    // Implémentation de la méthode getUserIdentifier() requise par UserInterface
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
     }
 }
