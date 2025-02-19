@@ -27,6 +27,10 @@ doctrine:
         controller_resolver:
             auto_mapping: false
 
+    # Section à ajouter pour configurer les migrations
+    migrations:
+        migrations_paths
+            'DoctrineMigrations': '%kernel.project_dir%migrations'
 when@test:
     doctrine:
         dbal:
