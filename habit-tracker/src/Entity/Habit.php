@@ -55,7 +55,7 @@ class Habit
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription(?string $name): self
     {
         $this->description = $description;
 
@@ -74,7 +74,7 @@ class Habit
         return $this;
     }
 
-    public function getUser():?User
+    public function getUser(): ?User
     {
         return $this->user;
     }
