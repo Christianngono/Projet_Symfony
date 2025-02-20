@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -26,6 +28,14 @@ class User implements UserInterface
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $photo = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Habit::class)]
+    private Collection $habits;
+
+    public function __construct()
+    {
+        $this->habits = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -76,6 +86,37 @@ class User implements UserInterface
     public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    // Ajout des méthodes liées à la relation habits
+    /**
+     * @return Collection|Habit[]
+     */
+    public function getHabits(): Collection
+    {
+        return $this->habits;
+    }
+
+    public function addHabit(Habit $habit): self
+    {
+        if (!$this->habits->contains($habit)) {
+            $this->habits[] = $habit;
+            $habit->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHabit(Habit $habit): self
+    {
+        if ($this->habits->removeElement($habit)) {
+            // set the owning side to null (unless already changed)
+            if ($habit->getUser() === $this) {
+                $habit->setUser(null);
+            }
+        }
 
         return $this;
     }
