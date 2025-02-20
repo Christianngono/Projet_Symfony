@@ -1,14 +1,14 @@
 {
     "type": "project",
     "license": "proprietary",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "doctrine/annotations": "^2.0",
-        "doctrine/cache": "^1.6",
+        "doctrine/annotations": "^2.0.2",
+        "doctrine/cache": "^1.13",
         "doctrine/dbal": "^3.9.4",
         "doctrine/doctrine-bundle": "^2.13.2",
         "doctrine/doctrine-migrations-bundle": ">=3.4.1",
@@ -28,7 +28,7 @@
         "symfony/yaml": "7.2.*"
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.62"
+        "symfony/maker-bundle": "^1.62.1"
     },
     "config": {
         "allow-plugins": {
